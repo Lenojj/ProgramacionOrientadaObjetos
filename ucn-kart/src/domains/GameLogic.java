@@ -90,8 +90,7 @@ public class GameLogic {
      * Metodo para almacenar todas las pistas
      */
 
-    
-    public String[] encontrarPistas() {
+    public String[] almacenPistas() {
 
         String [] resultados = new String[cantidadPistas];
 
@@ -101,4 +100,30 @@ public class GameLogic {
         }
         return resultados;
     }
+
+    /*
+     * Métodos para obtener: nombrePista, nombreKart y tipoKart 
+     */
+    public String nombrePistas(String pista) {
+
+        return pista.split(",")[0];
+    }
+
+    public String nombreKart(String kart) {
+
+        return kart.split(",")[0];
+    }
+
+    public String tipoKart(String kart) {
+
+        String[] datos = kart.split(",");
+        
+        if (datos.length > 1) {
+
+            return datos[1];
+        }
+
+        return null;
+    }
+
 }
