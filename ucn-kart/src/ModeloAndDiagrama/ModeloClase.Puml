@@ -1,0 +1,27 @@
+@startuml
+
+skin rose
+left to right direction
+
+entity Piloto {
+    * nombre
+}
+
+entity Kart {
+    * nombre
+    * categoria
+}
+
+entity Pista {
+    * nombre
+    * copa
+    * tiempoBase
+    * terreno
+}
+
+Piloto "1" -- "0..10" Kart : > Tiene
+Kart "0..*" -- "0..*" Pista : > Compite
+
+@enduml
+
+

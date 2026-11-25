@@ -1,0 +1,56 @@
+@startuml
+
+skin rose
+left to right direction
+
+class Main {
+    + {static} main(args : String[]) : void
+}
+
+class Game <<final>> {
+
+    - logica : GameLogic
+    - input : Scanner
+    - nombrePiloto : String
+    - kartsPiloto : String[]
+    - pistasDisponibles : String[]
+
+    + Game(logica : GameLogic)
+    + iniciar() : void
+
+    - cargarPistas() : void
+    - buscarPiloto() : void
+    - mostrarKarts() : void
+    - mostrarPistas() : void
+    - consultarPiloto() : void
+    - calcularTiempo() : void
+    - leerNumero() : int
+    - menu() : void
+}
+
+class GameLogic {
+
+    - pilotos : String[]
+    - pistas : String[]
+    - cantidadPilotos : int
+    - cantidadPistas : int
+
+    + GameLogic()
+    + buscarPiloto(nombrePiloto : String) : String[]
+    + almacenPistas() : String[]
+    + nombrePistas(pista : String) : String
+    + nombreKart(kart : String) : String
+    + tipoKart(kart : String) : String
+    + obtenerTerrereno(pista : String) : String
+    + obtenerTiempo(pista : String) : double
+    + factor(tipoKart : String, terreno : String) : double
+    + obtenerAjuste(factor : double) : String
+    + calcularTiempo(tiempoBase : double, factor : double) : double
+    + registrarPiloto(nombre : String) : boolean
+}
+
+Main ..> Game : Crea
+Main ..> GameLogic : Crea
+Game --> "1" GameLogic : Utiliza
+
+@enduml
